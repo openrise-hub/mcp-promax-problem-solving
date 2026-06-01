@@ -1,0 +1,11 @@
+[package]
+name = "mcp-promax-problem-solving"
+version = "0.1.0"
+edition = "2024"
+description = "A Rust-based MCP server that provides tools for 7 structured mental models to solve problems systematically."
+license = "Apache-2.0"
+
+[dependencies]
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+tokio = { version = "1.0", features = ["full"] }
