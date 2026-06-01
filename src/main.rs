@@ -82,7 +82,7 @@ fn handle_request(req: JsonRpcRequest) -> JsonRpcResponse {
                 },
                 {
                     "name": "execute_six_hats",
-                    "description": "Applies De Bono's Six Thinking Hats to the context.",
+                    "description": "Applies De Bono's Six Thinking Hats to the context simultaneously.",
                     "inputSchema": {
                         "type": "object",
                         "properties": {
@@ -191,46 +191,100 @@ fn handle_tool_call(params: Value) -> Value {
         },
         "analyze_ooda_loop" => {
             format!(
-                "Context: {}\n\n\
-                Structure your analysis using the OODA Loop:\n\
-                1. OBSERVE: List raw facts and data points.\n\
-                2. ORIENT: Analyze context, biases, and experience.\n\
-                3. DECIDE: Choose the best course of action.\n\
-                4. ACT: Execute a rapid test to validate.",
+                "MANDATE: You must analyze the following scenario using the OODA Loop framework.\n\
+                    Context: {}\n\n\
+                    Execute your response using strict Markdown headers for each phase, adhering to these criteria:\n\n\
+                    ### 1. OBSERVE\n\
+                    - Isolate raw, verified facts, telemetry data, and objective environmental signals from the context.\n\
+                    - Explicitly separate confirmed data from subjective interpretations or hearsay.\n\
+                    - Identify critical missing information or active blind spots that remain unknown.\n\n\
+                    ### 2. ORIENT\n\
+                    - Map out technical dependencies, architectural constraints, and legacy paradigms shaping the problem.\n\
+                    - Analyze underlying biases, systemic habits, or flawed assumptions embedded in the context.\n\
+                    - Explain how the current system state mismatches expected mental or operational models.\n\n\
+                    ### 3. DECIDE\n\
+                    - Formulate at least two distinct, competing solution vectors to resolve the core issue.\n\
+                    - Contrast both options using a clear risk-reward matrix or engineering tradeoffs.\n\
+                    - Explicitly select the optimal immediate path forward and justify the choice.\n\n\
+                    ### 4. ACT\n\
+                    - Define a concrete, minimal, and measurable test sequence to validate the chosen hypothesis.\n\
+                    - Establish clear success metrics to observe in production or operation.\n\
+                    - Define an immediate rollback trigger or failure boundary condition.",
                 context
             )
         },
         "apply_first_principles" => {
             format!(
-                "Context: {}\n\n\
-                Structure your analysis using First Principles Thinking:\n\
-                1. Identify assumptions present in the context.\n\
-                2. Challenge and deconstruct those assumptions.\n\
-                3. Rebuild a solution from scratch using only fundamental truths.",
+                "MANDATE: You must analyze the following scenario using First Principles Thinking.\n\
+                        Context: {}\n\n\
+                        Execute your response using strict Markdown headers for each phase, adhering to these criteria:\n\n\
+                        ### 1. IDENTIFY CURRENT ASSUMPTIONS\n\
+                        - Surface all implicit assumptions, hand-wavy axioms, and industry 'best practices' accepted within the context.\n\
+                        - Highlight legacy constraints, resource limitations, or operational behaviors currently treated as unchangeable.\n\
+                        - Document the exact rationale or historical reason behind why the current solution is framed this way.\n\
+                        - Identify emotional or cognitive biases driving the insistence on the current approach.\n\n\
+                        ### 2. CHALLENGE AND DECONSTRUCT\n\
+                        - Systematically audit every identified assumption and question its absolute validity.\n\
+                        - Separate true foundational laws (hard physical limits, basic programming constraints, raw system data) from arbitrary conventions.\n\
+                        - Boil the situation down to its fundamental truths, the core facts that remain indisputably true even if all legacy architecture is stripped away.\n\n\
+                        ### 3. REBUILD FROM SCRATCH\n\
+                        - Synthesize a novel solution vector built exclusively from the isolated fundamental truths.\n\
+                        - Intentionally avoid importing any legacy patterns, tools, or workflows challenged in the previous phase.\n\
+                        - Demonstrate how this bottom-up architecture resolves the core problem more efficiently than traditional incremental fixes.\n\
+                        - Trace the lineage of the new solution back to a validated axiom to prove its logical soundness.\n\
+                        - Define the first actionable architectural step required to prototype this new foundation.",
                 context
             )
         },
         "execute_six_hats" => {
             format!(
-                "Context: {}\n\n\
-                Structure your analysis across all Six Thinking Hats simultaneously:\n\
-                - WHITE HAT: Data and objective facts.\n\
-                - RED HAT: Emotions and intuitions.\n\
-                - BLACK HAT: Risks and negative factors.\n\
-                - YELLOW HAT: Benefits and positive values.\n\
-                - GREEN HAT: Creative alternatives and lateral ideas.\n\
-                - BLUE HAT: Process control and next steps.",
+            "MANDATE: Execute an exhaustive parallel-thinking evaluation using Edward de Bono's Six Thinking Hats.\n\
+                    Context: {}\n\n\
+                    Generate your full evaluation by separating perspectives into these precise blocks using strict Markdown headers:\n\n\
+                    ### WHITE HAT\n\
+                    - Compile all objective metrics, verified data points, configuration states, and hard telemetry found in the context.\n\
+                    - Explicitly list information gaps, unverified claims, or data points that are currently missing.\n\n\
+                    ### RED HAT\n\
+                    - Document immediate gut reactions, underlying anxieties, and unspoken psychological friction points within the context.\n\
+                    - Capture the raw emotional or visceral impact of the situation on team velocity or stakeholder trust without providing logical justifications.\n\n\
+                    ### BLACK HAT\n\
+                    - Conduct an aggressive risk assessment, exposing systemic vulnerabilities, fatal architectural flaws, and compliance risks.\n\
+                    - Analyze worst-case scenarios, compounding dependency failures, and explicit reasons why proposed directions will fail.\n\
+                    - Challenge optimistic assumptions by enforcing strict security bounds, technical constraints, and operational overheads.\n\n\
+                    ### YELLOW HAT\n\
+                    - Identify immediate value propositions, structural efficiencies, and high-probability operational benefits under a lens of logical optimism.\n\
+                    - Explore how this specific challenge can be leveraged as a catalyst for architecture cleanup or strategic optimization.\n\n\
+                    ### GREEN HAT\n\
+                    - Generate unconstrained architectural workarounds and lateral technical solutions.\n\
+                    - Introduce structural provocations to break away from traditional linear troubleshooting patterns.\n\
+                    - Propose micro-experiments or proof-of-concepts that completely route around the active constraint.\n\n\
+                    ### BLUE HAT\n\
+                    - Synthesize the conflicting constraints, risks, and creative opportunities discovered across all previous hats.\n\
+                    - Enforce process control by mapping out the definitive step-by-step orchestration sequence for execution.\n\
+                    - Establish explicit success metrics, priority thresholds, and governance guidelines for the next phase of work.",
                 context
             )
         },
         "analyze_pareto" => {
             format!(
-                "Context: {}\n\n\
-                Structure your analysis using the Pareto principle:\n\
-                1. Deduce activities or issues from the text.\n\
-                2. Estimate the impact of each element.\n\
-                3. Isolate the 20% driving most of the results.\n\
-                4. Provide rules to eliminate, automate, or delegate the rest.",
+            "MANDATE: Run a rigorous Pareto 80/20 Optimization Analysis on the provided scenario.\n\
+                    Context: {}\n\n\
+                    Execute your response using strict Markdown headers for each phase, adhering to these criteria:\n\n\
+                    ### 1. DEDUCE COMPONENT VARIABLES\n\
+                    - Isolate and list every distinct activity, structural bottleneck, bug, or operational input implied in the context.\n\
+                    - Deconstruct compound problems into atomic, trackable components of effort, failure, or resource expenditure.\n\n\
+                    ### 2. QUANTIFY IMPACT AND LEVERAGE\n\
+                    - Assign a logical weight, operational cost, or blast-radius metric to each deduced variable based on the text.\n\
+                    - Explicitly distinguish high-frequency/low-leverage operational noise from low-frequency/high-severity systemic risks.\n\
+                    - Map out the exact downstream dependencies showing how certain inputs disproportionately compound friction.\n\n\
+                    ### 3. ISOLATE THE VITAL FEW (THE 20%)\n\
+                    - Explicitly name the exact 20% core drivers that logically dictate 80% of the negative friction or potential strategic upside.\n\
+                    - Provide a detailed engineering or logical justification for why resolving these specific nodes yields maximum systemic leverage.\n\n\
+                    ### 4. STRATEGIC FOCUS ON LEVERAGE\n\
+                    - Outline an aggressive action plan to concentrate immediate engineering bandwidth and technical resources exclusively on the isolated 20% core.\n\n\
+                    ### 5. MITIGATION OF THE TRIVIAL MANY (THE 80%)\n\
+                    - Define strict, uncompromising heuristics to eliminate, automate, or delegate the remaining 80% low-leverage variables.\n\
+                    - Establish firm architectural boundaries or policy thresholds to guarantee these secondary tasks cannot bleed into active focus or derail velocity.",
                 context
             )
         },
@@ -239,31 +293,60 @@ fn handle_tool_call(params: Value) -> Value {
             match chosen_method {
                 "fishbone" => {
                     format!(
-                        "Context: {}\n\n\
-                        Structure your Root Cause Analysis using a Fishbone Diagram framework across these categories:\n\
-                        - Environment\n\
-                        - Process\n\
-                        - Code\n\
-                        - Data\n\
-                        Identify the root cause based on these factors.",
+                        "MANDATE: Run a comprehensive Fishbone Diagram (Ishikawa) Root Cause Analysis.\n\
+                        Context: {}\n\n\
+                        Organize your investigative tracing into these precise structural categories using strict Markdown headers:\n\n\
+                        ### 1. ENVIRONMENT AND INFRASTRUCTURE\n\
+                        - Analyze cloud infrastructure configurations, network topology bottlenecks, third-party service availability, or regional outages.\n\
+                        - Identify compute resource starvation, memory ceiling limits, or external hardware conditions impacting execution metrics.\n\n\
+                        ### 2. PROCESS AND PIPELINES\n\
+                        - Audit deployment sequences, version control workflows, automated code-testing gates, and build pipelines.\n\
+                        - Evaluate operational runbooks, manual error-prone human intervention steps, or gaps in staging-to-production parity.\n\n\
+                        ### 3. CODE AND ARCHITECTURE\n\
+                        - Inspect for runtime exceptions, unhandled logic branches, improper asynchronous state synchronization, or severe race conditions.\n\
+                        - Evaluate deep dependency conflicts, algorithmic complexity scaling flaws, execution blocks, or bad loop patterns.\n\n\
+                        ### 4. DATA AND STORAGE\n\
+                        - Review persistence states, cascading database locks, transaction timeouts, connection pool saturation, or missing index layouts.\n\
+                        - Trace corrupted payloads, invalid client serialization formats, or unexpected schema alterations across distributed storage nodes.\n\n\
+                        ### 5. ROOT CAUSE CONVERGENCE\n\
+                        - Synthesize how these separate categories cross-contaminate or interact to trigger the macroscopic systemic failure.\n\
+                        - Explicitly name and defend the validated single point of origin that acts as the core bottleneck.",
                         context
                     )
                 },
                 "fault_tree" => {
                     format!(
-                        "Context: {}\n\n\
-                        Structure your Root Cause Analysis using a Fault-Tree framework:\n\
-                        1. Define the top event failure.\n\
-                        2. Map contributing sub-failures and conditions.\n\
-                        3. Trace down to primary triggers.",
+                        "MANDATE: Construct a top-down Fault-Tree Analysis to deconstruct the system failure state.\n\
+                        Context: {}\n\n\
+                        Execute your deductive failure trace by populating these exact logical nodes using strict Markdown headers:\n\n\
+                        ### 1. TOP EVENT\n\
+                        - Explicitly define the primary macro system failure, degradation pattern, or undesirable outcome recorded in the context.\n\
+                        - Quantify the operational impact, error rates, blast radius, and exact timeline boundaries of the incident.\n\n\
+                        ### 2. CONTRIBUTING CONDITIONS (LOGIC GATES)\n\
+                        - Map out the immediate intermediate sub-failures or dependent states that had to occur to trigger the Top Event.\n\
+                        - Classify whether these conditions combined via logical AND gates (requiring all to fail simultaneously) or OR gates (where any single sub-failure initiates the state).\n\
+                        - Pair each active intermediate node with its corresponding system logs, metric trends, or telemetry validation.\n\n\
+                        ### 3. PRIMARY EVENTS AND BASIC CAUSES\n\
+                        - Trace downward to find the basal hardware anomalies, configuration file values, or explicit code errors that initiated the cascade.\n\
+                        - Isolate component bugs or human execution slips that cannot be further subdivided or deconstructed.\n\
+                        - Define the critical absolute minimum sequence of structural failures required to reproduce this exact system behavior.",
                         context
                     )
                 },
                 _ => {
                     format!(
-                        "Context: {}\n\n\
-                        Structure your Root Cause Analysis using the 5 Whys framework:\n\
-                        Trace five consecutive levels of causality from the visible symptom down to the root cause.",
+                        "MANDATE: Execute a linear 5 Whys causal tracing procedure.\n\
+                        Context: {}\n\n\
+                        Construct a tight, chronologically sound chain of consecutive causality using strict Markdown headers:\n\n\
+                        ### 1. THE CAUSAL CHAIN\n\
+                        - WHY 1: State the direct technical trigger or immediate mechanism behind the visible surface symptom.\n\
+                        - WHY 2: Isolate the component behavior, dependency, or state change that allowed Why 1 to manifest.\n\
+                        - WHY 3: Track the configuration boundary, missing structural validation, or internal logical flaw driving Why 2.\n\
+                        - WHY 4: Uncover the architectural choice, legacy paradigm constraint, or testing gap that permitted Why 3 to exist undetected.\n\
+                        - WHY 5 (SYSTEMIC ROOT CAUSE): Target the foundational architectural pattern, systemic policy breakdown, or logic design flaw causing the sequence.\n\n\
+                        ### 2. REMEDIATION ENGINEERING\n\
+                        - Formulate a permanent technical fix engineered to target and rewrite the systemic root cause node identified in Why 5.\n\
+                        - Specify exact automated regression constraints, continuous integration rules, or defensive guardrails to prevent future replication.",
                         context
                     )
                 }
@@ -271,20 +354,45 @@ fn handle_tool_call(params: Value) -> Value {
         },
         "evaluate_occams_razor" => {
             format!(
-                "Context: {}\n\n\
-                Structure your analysis using Occam's Razor:\n\
-                1. List possible explanations or solutions.\n\
-                2. Identify the assumptions required for each option.\n\
-                3. Select the simplest viable solution with the fewest assumptions.",
+                "MANDATE: Apply Occam's Razor to parse and resolve competing technical hypotheses or solutions.\n\
+                Context: {}\n\n\
+                Execute your response using strict Markdown headers for each phase, adhering to these criteria:\n\n\
+                ### 1. DEFINE THE PROBLEM BOUNDARIES\n\
+                - Clearly state the observed anomaly, technical mystery, or engineering choice that requires resolution.\n\
+                - Isolate the precise constraints and non-negotiable requirements that any valid hypothesis must satisfy.\n\n\
+                ### 2. ENUMERATE COMPETING HYPOTHESES\n\
+                - List all distinct, viable explanations, architectural designs, or solutions proposed within the context.\n\
+                - Map out the exact mechanism by which each hypothesis claims to solve or explain the problem.\n\n\
+                ### 3. AUDIT SUBJACENT ASSUMPTIONS\n\
+                - Deconstruct each hypothesis by explicitly listing its unverified assumptions, speculative dependencies, and logical leaps.\n\
+                - Quantify the fragility of each option based on its reliance on external factors, unmonitored systems, or unproven behaviors.\n\n\
+                ### 4. EXECUTE THE STRUCTURAL PARING\n\
+                - Compare the options side-by-side and systematically eliminate hypotheses burdened by excessive or unprovable presuppositions.\n\
+                - Select the simplest viable solution that completely accounts for all known facts and satisfies all technical constraints.\n\
+                - Provide a rigorous justification for why this minimum-viable explanation introduces the lowest systemic risk and overhead.",
                 context
             )
         },
+        "version" => {
+            "0.1.0".to_string()
+        },
         "apply_rule_5x5" => {
             format!(
-                "Context: {}\n\n\
-                Structure your analysis using the 5x5 Rule:\n\
-                1. Determine if this situation will matter in 5 years.\n\
-                2. If the answer is no, apply a strict 5-minute boundary to move on and change focus.",
+                "MANDATE: Trigger the 5x5 Rule framework for immediate tactical perspective and cognitive bandwidth triage.\n\
+                Context: {}\n\n\
+                Execute your response using strict Markdown headers for each phase, adhering to these criteria:\n\n\
+                ### 1. ISOLATE INCIDENT REALITY\n\
+                - Enumerate the explicit operational, financial, or technical side effects caused by this setback.\n\
+                - Separate the objective mechanical impact of the event from subjective emotional friction or psychological drag.\n\n\
+                ### 2. THE 5-YEAR PROJECTION FILTER\n\
+                - Evaluate this exact situation on a 5-year macro timeline: will it structurally matter to the architecture, codebase, product viability, or long-term business health?\n\
+                - Provide an explicit, binary [YES/NO] determination accompanied by a clear, unvarnished logical justification.\n\n\
+                ### 3. THE 5-MINUTE CEILING CONSTRAINT\n\
+                - If the 5-year projection is NO, immediately initiate a hard 5-minute cognitive boundary to prevent overthinking.\n\
+                - Specify a low-effort, immediate containment action (e.g., a minor patch revert, a brief neutral update, or logging a low-priority backlog ticket) to safely close the operational loop.\n\n\
+                ### 4. CONTEXT SWITCH AND DIVERSION\n\
+                - Define the exact high-leverage engineering task, architectural milestone, or creative solution active focus must pivot to right now.\n\
+                - Establish a definitive policy constraint to block repetitive team discussions or ongoing analysis of this minor setback, protecting systemic engineering velocity.",
                 context
             )
         },
